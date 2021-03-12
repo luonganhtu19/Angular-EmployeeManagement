@@ -1,0 +1,48 @@
+<a routerLink="../create">Tao moi nhan vien</a>
+<div class="mat-elevation-z8">
+  <table *ngIf="employees" mat-table [dataSource]="employees">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No.</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Age Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age</th>
+      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+
+    <!-- Office Column -->
+    <ng-container matColumnDef="office">
+      <th mat-header-cell *matHeaderCellDef> Office</th>
+      <td mat-cell *matCellDef="let element"> {{element.office.name}} </td>
+    </ng-container>
+
+    <!-- Position Column    -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Position</th>
+      <td mat-cell *matCellDef="let element"> {{element.position.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button style="margin-right: 5px" (click)="updateEmployee(element.id)">Update</button>
+        <button (click)="deleteEmployee(element.id)">Delete</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+

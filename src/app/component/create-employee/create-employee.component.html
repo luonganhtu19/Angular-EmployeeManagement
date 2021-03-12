@@ -1,0 +1,32 @@
+<a routerLink="../list">List Employee</a>
+<form [formGroup]="employeForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td><label for="name">Name</label></td>
+      <td><input id="name" type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td><label for="age">Age</label></td>
+      <td><input id="age" type="number" formControlName="age"></td>
+    </tr>
+    <tr>
+      <label for="office">Office</label>
+      <select formControlName="office" id="office">
+        <option *ngFor="let office of offices" value="{{office.id}}">{{office.name}}</option>
+      </select>
+    </tr>
+    <tr>
+      <td>
+        <label for="position">Position</label>
+        <select formControlName="position" id="position">
+          <option *ngFor="let position of positions" value="{{position.id}}">{{position.name}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button>Submit</button></td>
+    </tr>
+  </table>
+</form>
